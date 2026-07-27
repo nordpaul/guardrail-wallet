@@ -19,5 +19,6 @@ ENV PORT=8787
 COPY --from=build /app/package.json ./package.json
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/dist ./dist
+COPY --from=build /app/docs ./docs
 EXPOSE 8787
 CMD ["node", "dist/index.js"]

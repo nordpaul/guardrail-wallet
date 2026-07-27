@@ -1,4 +1,6 @@
 import { Hono } from "hono";
+import { existsSync, readFileSync } from "node:fs";
+import { extname, resolve, sep } from "node:path";
 import { z } from "zod";
 import type { PaymentService } from "../service.js";
 import type { PaymentRecord, PaymentRequest } from "../types.js";
@@ -117,6 +119,10 @@ export function buildApi(
   dashboardToken: string | null,
 ): Hono {
   const app = new Hono();
+  const docsRoot = resolve(process.cwd(), "docs");
+  const launchMdPath = resolve(docsRoot, "LAUNCH.md");
+  const docsAssetsRoot = resolve(docsRoot, "assets");
+  const launchMime = "text/markdown; charset=utf-8";
 
   app.get("/health", (c) => c.json({ ok: true }));
 
@@ -126,6 +132,45 @@ export function buildApi(
   app.get("/", (c) => c.html(landingHtml));
   app.get("/docs", (c) => c.html(docsEnglishHtml));
   app.get("/docs/ru", (c) => c.html(docsRussianHtml));
+  app.get("/docs/LAUNCH.md", (c) => {
+    if (!existsSync(launchMdPath)) return c.notFound();
+    const body = readFileSync(launchMdPath, "utf8");
+    return c.text(body, 200, { "Content-Type": launchMime });
+  });
+  app.get("/docs/assets/:filename", (c) => {
+    const filename = c.req.param("filename");
+    if (!/^[A-Za-z0-9._-]+\.(gif|png|jpg|jpeg|svg|webp|css|js|json)$/i.test(filename)) {
+      return c.notFound();
+    }
+
+    const filepath = resolve(docsAssetsRoot, filename);
+    if (!filepath.startsWith(docsAssetsRoot + sep)) {
+      return c.notFound();
+    }
+    if (!existsSync(filepath)) {
+      return c.notFound();
+    }
+
+    const mimeByExt = {
+      ".gif": "image/gif",
+      ".png": "image/png",
+      ".jpg": "image/jpeg",
+      ".jpeg": "image/jpeg",
+      ".svg": "image/svg+xml",
+      ".webp": "image/webp",
+      ".css": "text/css; charset=utf-8",
+      ".js": "application/javascript; charset=utf-8",
+      ".json": "application/json; charset=utf-8",
+    } as const;
+    const extension = extname(filename).toLowerCase();
+    const contentType = mimeByExt[extension as keyof typeof mimeByExt] ?? "application/octet-stream";
+
+    const bytes = readFileSync(filepath);
+    return c.body(bytes, 200, {
+      "Content-Type": contentType,
+      "Cache-Control": "public, max-age=300",
+    });
+  });
   app.get("/api", (c) => c.html(apiDocsHtml));
   app.get("/dashboard", (c) => c.html(dashboardHtml));
   app.get("/robots.txt", (c) => c.text(robotsTxt()));
