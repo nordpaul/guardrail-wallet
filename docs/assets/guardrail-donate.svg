@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="420" viewBox="0 0 1400 420" role="img" aria-labelledby="title desc">
+  <title id="title">Support Guardrail Wallet</title>
+  <desc id="desc">A support call-to-action card for Guardrail Wallet with donation and open-source call.</desc>
+  <rect width="1400" height="420" fill="#111827"/>
+  <rect x="36" y="36" width="1328" height="348" rx="28" fill="#1f2937"/>
+  <rect x="36" y="36" width="1328" height="8" fill="#22c55e"/>
+  <text x="88" y="130" fill="#e5e7eb" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="58" font-weight="800">
+    Support this project
+  </text>
+  <text x="88" y="188" fill="#9ca3af" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="30">
+    If Guardrail Wallet helps you control AI spending safely,
+  </text>
+  <text x="88" y="230" fill="#9ca3af" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="30">
+    a small contribution keeps the project alive.
+  </text>
+  <rect x="88" y="275" width="300" height="72" rx="16" fill="#06b6d4"/>
+  <text x="138" y="323" fill="#f8fafc" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="30" font-weight="700">
+    TON support wallet
+  </text>
+  <text x="88" y="380" fill="#6b7280" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24">
+    Transparent, open-source, self-hosted guardrails for AI agents.
+  </text>
+</svg>

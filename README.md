@@ -2,6 +2,14 @@
 
 [Live demo](https://patronhill.ru) | [Documentation](https://patronhill.ru/docs) | [Русская документация](https://patronhill.ru/docs/ru) | [API reference](https://patronhill.ru/api) | [Roadmap](./ROADMAP.md) | [План на русском](./docs/ROADMAP.ru.md) | [Agent integration](./AGENTS.md) | [Security model](./SECURITY.md)
 
+<p align="center">
+  <img src="./docs/assets/guardrail-banner.svg" alt="Guardrail Wallet banner" width="100%">
+</p>
+
+![GitHub stars](https://img.shields.io/github/stars/nordpaul/guardrail-wallet?style=for-the-badge&logo=github) 
+![License](https://img.shields.io/github/license/nordpaul/guardrail-wallet?style=for-the-badge)
+![Last commit](https://img.shields.io/github/last-commit/nordpaul/guardrail-wallet?style=for-the-badge)
+
 **A self-hosted wallet that lets an AI agent spend money — within limits you set, with you signing off from Telegram.**
 
 > The public demo uses `EXECUTOR=stub` and never moves real money. The TON
@@ -165,11 +173,22 @@ balances behind it yet.**
 
 ## Support this project
 
+<p align="center">
+  <img src="./docs/assets/guardrail-donate.svg" alt="Support Guardrail Wallet" width="100%">
+</p>
+
 Guardrail Wallet is free and MIT-licensed. If it's useful to you, donations keep
 it maintained:
 
 - TON: `UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ`
 - Tonkeeper: [Support Guardrail Wallet](https://app.tonkeeper.com/transfer/UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ?text=Support%20Guardrail%20Wallet)
+- GitHub: give project a star, test the demo, and invite one contributor to the repo.
+
+### If you use this for real household/business flows
+
+- Open an issue with your use-case — we can suggest safe policy templates.
+- Ask for a private consulting setup for your team.
+- Enable donation support after your first successful deployment, if this project saved you time.
 
 ## Documentation
 
