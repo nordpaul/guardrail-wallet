@@ -3,7 +3,9 @@
 [Live demo](https://patronhill.ru) | [Documentation](https://patronhill.ru/docs) | [Русская документация](https://patronhill.ru/docs/ru) | [API reference](https://patronhill.ru/api) | [Roadmap](./ROADMAP.md) | [План на русском](./docs/ROADMAP.ru.md) | [Agent integration](./AGENTS.md) | [Security model](./SECURITY.md)
 
 <p align="center">
-  <img src="./docs/assets/guardrail-banner.svg" alt="Guardrail Wallet banner" width="100%">
+  <a href="https://patronhill.ru">
+    <img src="./docs/assets/guardrail-banner.svg" alt="Guardrail Wallet banner" style="max-width: 100%; width: 1000px; border: 1px solid #e5e7eb; border-radius: 12px;">
+  </a>
 </p>
 
 ![GitHub stars](https://img.shields.io/github/stars/nordpaul/guardrail-wallet?style=for-the-badge&logo=github) 
@@ -174,7 +176,9 @@ balances behind it yet.**
 ## Support this project
 
 <p align="center">
-  <img src="./docs/assets/guardrail-donate.svg" alt="Support Guardrail Wallet" width="100%">
+  <a href="https://app.tonkeeper.com/transfer/UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ?text=Support%20Guardrail%20Wallet">
+    <img src="./docs/assets/guardrail-donate.svg" alt="Support Guardrail Wallet" style="max-width: 100%; width: 860px; border: 1px solid #e5e7eb; border-radius: 12px;">
+  </a>
 </p>
 
 Guardrail Wallet is free and MIT-licensed. If it's useful to you, donations keep
