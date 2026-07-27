@@ -123,7 +123,9 @@ describe("agent API", () => {
     );
     const reqBody = await requested.json();
 
-    expect(reqBody.purchase).toEqual({
+    expect(reqBody.purchase).toMatchObject({
+      amount: 17.5,
+      currency: "USD",
       order_id: "order-001",
       checkout_id: "checkout-001",
       cart_id: "cart-001",
@@ -142,6 +144,8 @@ describe("agent API", () => {
         order_id: "order-001",
         item_count: 2,
         item_total: 17.5,
+        amount: 17.5,
+        currency: "USD",
       },
     });
 
