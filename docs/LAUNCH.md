@@ -15,6 +15,10 @@ The agent never receives owner authority.
    `guardrail-demo-agent`.
 4. Inspect the policy reason and approve or reject the request.
 
+![Guardrail Wallet stub request, owner review, and rejection walkthrough](./assets/guardrail-demo-walkthrough.gif)
+
+Prefer web text mode: [walkthrough](https://patronhill.ru/docs)
+
 ## Run it at home
 
 Clone the repository, copy `.env.example`, keep `EXECUTOR=stub`, and start with
