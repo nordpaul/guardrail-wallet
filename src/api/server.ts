@@ -59,9 +59,9 @@ export function buildApi(
   app.get("/docs/ru", (c) => c.html(docsRussianHtml));
   app.get("/api", (c) => c.html(apiDocsHtml));
   app.get("/dashboard", (c) => c.html(dashboardHtml));
-  app.get("/robots.txt", (c) => c.text(robotsTxt));
+  app.get("/robots.txt", (c) => c.text(robotsTxt()));
   app.get("/sitemap.xml", (c) =>
-    c.body(sitemapXml, 200, { "Content-Type": "application/xml; charset=utf-8" }),
+    c.body(sitemapXml(), 200, { "Content-Type": "application/xml; charset=utf-8" }),
   );
 
   app.use("/admin/*", async (c, next) => {
