@@ -1,0 +1,56 @@
+name: Installation report
+description: Share a reproducible installation or startup failure from an environment.
+title: "[Install] "
+labels: ["installation", "early-access"]
+body:
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS version, distribution, Node version, Docker version, and architecture.
+      placeholder: "Ubuntu 24.04, Node 22.5.0, Docker 27.0.2 (amd64)"
+    validations:
+      required: true
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: Installation method
+      options:
+        - npm
+        - Docker
+        - Both
+        - Other
+      default: 0
+    validations:
+      required: true
+  - type: input
+    id: failing_command
+    attributes:
+      label: Exact command
+      description: Paste the exact command you ran.
+      placeholder: "npm run dev"
+    validations:
+      required: true
+  - type: textarea
+    id: expected_result
+    attributes:
+      label: Expected result
+      description: What should have happened?
+      placeholder: "Service should start and print listening port"
+    validations:
+      required: true
+  - type: textarea
+    id: actual_result
+    attributes:
+      label: Actual result
+      description: Output, logs, and errors (trim sensitive values).
+    validations:
+      required: true
+  - type: checkboxes
+    id: secret_cleanup
+    attributes:
+      label: Secret handling
+      description: Confirm that no secrets or mnemonics are included in this report.
+      options:
+        - label: I confirmed no mnemonics, token values, wallet addresses, or payment credentials are included.
+          required: true

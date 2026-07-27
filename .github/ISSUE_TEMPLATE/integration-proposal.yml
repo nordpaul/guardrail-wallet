@@ -1,0 +1,50 @@
+name: Integration proposal
+description: Share a concrete integration plan for an AI agent framework or executor.
+title: "[Integration] "
+labels: ["integration", "early-access"]
+body:
+  - type: input
+    id: agent_framework
+    attributes:
+      label: Agent framework
+      description: Name and version of the framework you are integrating.
+      placeholder: "LangGraph 0.1, CrewAI, custom Python stack"
+    validations:
+      required: true
+  - type: dropdown
+    id: payment_rail
+    attributes:
+      label: Payment rail / executor
+      description: Choose the current or target payment executor.
+      options:
+        - stub
+        - ton
+        - custom internal executor
+        - not decided
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: household_example
+    attributes:
+      label: Household use case
+      description: Describe one household request flow and safety policy checks.
+      placeholder: "Family grocery order with category, limit, recipient allowlist"
+    validations:
+      required: true
+  - type: textarea
+    id: api_boundary
+    attributes:
+      label: Requested API boundary
+      description: What endpoints, headers, and payload fields do you need?
+      placeholder: "POST /v1/payments/request, read /v1/payments/:id"
+    validations:
+      required: true
+  - type: textarea
+    id: security_assumptions
+    attributes:
+      label: Security assumptions
+      description: Which trust boundaries are assumed for your integration?
+      placeholder: "Owner token is not exposed to agents; policy is loaded from signed YAML"
+    validations:
+      required: true
