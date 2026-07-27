@@ -1,6 +1,6 @@
 # Guardrail Wallet
 
-[Live demo](https://patronhill.ru) | [Documentation](https://patronhill.ru/docs) | [Русская документация](https://patronhill.ru/docs/ru) | [API reference](https://patronhill.ru/api) | [Agent integration](./AGENTS.md) | [Security model](./SECURITY.md)
+[Live demo](https://patronhill.ru) | [Documentation](https://patronhill.ru/docs) | [Русская документация](https://patronhill.ru/docs/ru) | [API reference](https://patronhill.ru/api) | [Roadmap](./ROADMAP.md) | [План на русском](./docs/ROADMAP.ru.md) | [Agent integration](./AGENTS.md) | [Security model](./SECURITY.md)
 
 **A self-hosted wallet that lets an AI agent spend money — within limits you set, with you signing off from Telegram.**
 
