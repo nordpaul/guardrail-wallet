@@ -1,0 +1,56 @@
+# Guardrail policy. Copy to policy.yaml and edit. This file is the human's
+# control surface — the agent never sees or changes it.
+#
+# Decision order (fail-closed):
+#   1. kill_switch / hard_limits  -> these mirror the on-chain ceiling
+#   2. blocklist                  -> always deny
+#   3. rules (first match wins)
+#   4. default
+#   5. auto_approve downgrade for trivial amounts (never downgrades a deny)
+
+currency_display: USD     # what you see; settled in stablecoin (USDT on TON) under the hood
+chain: ton
+
+# Hard ceiling. Also enforced on-chain by the guardrail extension, so even a
+# fully compromised server cannot exceed these. Worst case = daily_max per day.
+hard_limits:
+  per_tx_max: 200
+  daily_max: 500
+  kill_switch: false      # flip to true to freeze ALL spending instantly
+
+auto_approve:
+  under: 25               # payments below this skip the human...
+  allow_new_recipient: false   # ...but the FIRST payment to anyone always asks
+
+rules:
+  # Hard no — these categories never go through.
+  - name: blocked-categories
+    if: { category: [crypto_withdrawal, p2p_transfer, gift_card] }
+    then: deny
+
+  # Everyday spending you trust.
+  - name: trusted-categories
+    if: { category: [groceries, utilities, subscription, transport] }
+    then: allow
+
+  # First time paying someone? You decide.
+  - name: new-recipient
+    if: { recipient_age: new }
+    then: require_approval
+
+  # Spending too fast — pause for a human even under the daily cap.
+  - name: velocity-guard
+    if: { velocity_24h_over: 300 }
+    then: require_approval
+
+# Anything not matched above:
+default: require_approval
+
+# Optional explicit lists (addresses or merchant ids).
+allowlist: []
+blocklist:
+  - "0xKNOWN_SCAMMER_ADDRESS"
+
+telegram:
+  owner_chat_id: 123456789      # your Telegram numeric id (get it from @userinfobot)
+  approval_timeout_sec: 600     # no answer in 10 min -> auto-reject
