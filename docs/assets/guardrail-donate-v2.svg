@@ -1,51 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="430" viewBox="0 0 1400 430" role="img" aria-labelledby="title desc">
   <title id="title">Support Guardrail Wallet</title>
-  <desc id="desc">Support card style aligned with Guardrail Wallet brand system.</desc>
+  <desc id="desc">Support card with separated copy, benefits, address, and footer areas.</desc>
 
   <defs>
-    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#172019"/>
-      <stop offset="100%" stop-color="#0f1a1a"/>
-    </linearGradient>
-    <pattern id="grid2" width="28" height="28" patternUnits="userSpaceOnUse">
-      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#f3efdf" stroke-width="0.8" stroke-opacity="0.18"/>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#f3efdf" stroke-width="0.8" stroke-opacity="0.28"/>
     </pattern>
-    <filter id="shadow2" x="-25%" y="-25%" width="150%" height="150%">
-      <feDropShadow dx="4" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.25"/>
-    </filter>
   </defs>
 
-  <rect width="1400" height="430" fill="#f0643b" fill-opacity="0.12"/>
-  <rect width="1400" height="430" fill="url(#grid2)"/>
+  <rect width="1400" height="430" fill="#f0643b"/>
+  <rect width="1400" height="430" fill="url(#grid)"/>
+  <rect x="52" y="48" width="1308" height="346" rx="26" fill="#172019" opacity="0.25"/>
+  <rect x="46" y="42" width="1308" height="346" rx="26" fill="#172019" stroke="#f3efdf" stroke-width="2"/>
+  <rect x="66" y="62" width="1268" height="306" rx="20" fill="#fffdf5" stroke="#172019" stroke-width="2"/>
 
-  <g filter="url(#shadow2)">
-    <rect x="46" y="42" width="1308" height="346" rx="26" fill="#172019" stroke="#f3efdf" stroke-width="2"/>
-  </g>
-  <rect x="66" y="62" width="1268" height="306" rx="20" fill="#fffdf5" fill-opacity="0.98" stroke="#172019" stroke-width="2"/>
-
-  <text x="102" y="126" font-family="Syne, Arial, sans-serif" font-size="24" font-weight="900" fill="#f0643b" letter-spacing="1">SUPPORT THE PROJECT</text>
-  <text x="102" y="174" font-family="Syne, Arial, sans-serif" font-size="64" font-weight="900" fill="#172019">KEEP GUARDRAIL ALIVE.</text>
-
-  <rect x="102" y="204" width="280" height="52" rx="12" fill="#c9ff45" stroke="#172019" stroke-width="2"/>
-  <text x="132" y="240" font-family="Syne, Arial, sans-serif" font-size="18" font-weight="800" fill="#172019">TON SUPPORT ADDRESS</text>
-
-  <g transform="translate(680 128)">
-    <rect x="0" y="0" width="642" height="232" rx="18" fill="#172019" stroke="#f0643b" stroke-width="2"/>
-    <rect x="24" y="22" width="594" height="60" rx="10" fill="#f3efdf"/>
-    <text x="42" y="60" font-family="Syne, Arial, sans-serif" font-size="26" font-weight="700" fill="#172019">Why support is useful</text>
-
-    <g transform="translate(26 98)">
-      <rect x="0" y="0" width="590" height="44" rx="10" fill="#2a2f3f"/>
-      <text x="16" y="28" font-family="Trebuchet MS, Arial, sans-serif" font-size="17" fill="#fffdf5">✔ Security hardening and audit-ready logs</text>
-      <rect x="0" y="52" width="590" height="44" rx="10" fill="#2a2f3f"/>
-      <text x="16" y="80" font-family="Trebuchet MS, Arial, sans-serif" font-size="17" fill="#fffdf5">✔ Documentation, examples, support</text>
-      <rect x="0" y="104" width="590" height="44" rx="10" fill="#2a2f3f"/>
-      <text x="16" y="132" font-family="Trebuchet MS, Arial, sans-serif" font-size="17" fill="#fffdf5">✔ New features for real-world household workflows</text>
-    </g>
+  <g id="donate-copy">
+    <text x="102" y="112" font-family="Syne, Arial, sans-serif" font-size="22" font-weight="900" fill="#f0643b" letter-spacing="1">SUPPORT THE PROJECT</text>
+    <text x="102" y="170" textLength="520" lengthAdjust="spacingAndGlyphs" font-family="Syne, Arial, sans-serif" font-size="58" font-weight="900" fill="#172019">KEEP GUARDRAIL</text>
+    <text x="102" y="226" textLength="205" lengthAdjust="spacingAndGlyphs" font-family="Syne, Arial, sans-serif" font-size="58" font-weight="900" fill="#172019">ALIVE.</text>
+    <rect x="102" y="246" width="292" height="44" rx="10" fill="#c9ff45" stroke="#172019" stroke-width="2"/>
+    <text x="126" y="275" font-family="Syne, Arial, sans-serif" font-size="16" font-weight="800" fill="#172019">TON SUPPORT ADDRESS</text>
+    <rect x="102" y="306" width="520" height="30" rx="5" fill="#172019"/>
+    <text x="116" y="327" textLength="488" lengthAdjust="spacingAndGlyphs" font-family="Trebuchet MS, Arial, sans-serif" font-size="12" fill="#fffdf5">UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ</text>
   </g>
 
-  <rect x="102" y="276" width="560" height="30" fill="#172019"/>
-  <text x="118" y="297" font-family="Trebuchet MS, Arial, sans-serif" font-size="13" fill="#fffdf5">Address: UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ</text>
+  <g id="donate-panel">
+    <rect x="720" y="92" width="580" height="220" rx="18" fill="#172019" stroke="#f0643b" stroke-width="2"/>
+    <rect x="740" y="112" width="540" height="48" rx="10" fill="#f3efdf"/>
+    <text x="760" y="144" font-family="Syne, Arial, sans-serif" font-size="23" font-weight="800" fill="#172019">WHAT YOUR SUPPORT BUILDS</text>
 
-  <text x="102" y="392" font-family="Trebuchet MS, Arial, sans-serif" font-size="14" fill="#556057">Any help directly supports public demo hosting, security improvements, and releases.</text>
+    <rect x="740" y="176" width="540" height="34" rx="8" fill="#2a2f3f"/>
+    <text x="758" y="199" font-family="Trebuchet MS, Arial, sans-serif" font-size="15" fill="#fffdf5">01 / Security hardening and audit-ready logs</text>
+    <rect x="740" y="220" width="540" height="34" rx="8" fill="#2a2f3f"/>
+    <text x="758" y="243" font-family="Trebuchet MS, Arial, sans-serif" font-size="15" fill="#fffdf5">02 / Documentation, examples, and support</text>
+    <rect x="740" y="264" width="540" height="34" rx="8" fill="#2a2f3f"/>
+    <text x="758" y="287" font-family="Trebuchet MS, Arial, sans-serif" font-size="15" fill="#fffdf5">03 / Household payment workflow features</text>
+  </g>
+
+  <g id="donate-footer">
+    <rect x="102" y="340" width="1198" height="18" rx="5" fill="#172019"/>
+    <rect x="102" y="340" width="170" height="18" rx="5" fill="#f0643b"/>
+  </g>
 </svg>
