@@ -11,12 +11,14 @@
   <rect x="48" y="40" width="1304" height="300" rx="24" fill="#111827" fill-opacity="0.95" />
   <rect x="48" y="40" width="1304" height="8" fill="#06b6d4" />
 
-  <text x="96" y="118" fill="#f1f5f9" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="52" font-weight="800">Support this project</text>
-  <text x="96" y="162" fill="#94a3b8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="28">Open-source project. No AI agent here gets owner keys.</text>
-  <text x="96" y="198" fill="#94a3b8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="28">Your support helps keep guardrails safe and maintained.</text>
+  <text x="96" y="118" fill="#f1f5f9" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="48" font-weight="800">Support this project</text>
+  <text x="96" y="165" fill="#94a3b8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24">Open-source project, no AI agent gets</text>
+  <text x="96" y="198" fill="#94a3b8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24">owner-level keys or private money access.</text>
+  <text x="96" y="235" fill="#94a3b8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24">Your support keeps Guardrail Wallet safe.</text>
 
   <rect x="96" y="230" width="340" height="82" rx="18" fill="#06b6d4" />
-  <text x="152" y="287" fill="#082f49" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="34" font-weight="800">TON support wallet</text>
+  <text x="152" y="287" fill="#082f49" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="32" font-weight="800">TON support wallet</text>
 
-  <text x="96" y="344" fill="#64748b" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="22">Donations are used for support, docs, audits, and deployment hardening.</text>
+  <text x="96" y="330" fill="#64748b" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="22">Donations fund support, docs, audits,</text>
+  <text x="96" y="354" fill="#64748b" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="22">and deployment hardening.</text>
 </svg>

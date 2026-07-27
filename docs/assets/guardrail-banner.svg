@@ -16,24 +16,25 @@
   <rect x="56" y="56" width="1488" height="508" rx="24" fill="#0f172a" fill-opacity="0.92" />
   <rect x="56" y="56" width="1488" height="8" rx="4" fill="url(#accent)" />
 
-  <text x="96" y="140" fill="#e5e7eb" font-size="62" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-weight="800">Guardrail Wallet</text>
+  <text x="96" y="140" fill="#e5e7eb" font-size="58" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-weight="800">Guardrail Wallet</text>
   <text x="96" y="205" fill="#94a3b8" font-size="30" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-weight="500">Safe payment control for AI agents</text>
 
-  <text x="96" y="286" fill="#d1d5db" font-size="28" font-family="Inter, 'Segoe UI', Arial, sans-serif">Request · Policy · Owner approval · Settlement</text>
-  <text x="96" y="326" fill="#9ca3af" font-size="28" font-family="Inter, 'Segoe UI', Arial, sans-serif">No hidden secrets for agents. You keep the keys and the control.</text>
+  <text x="96" y="286" fill="#d1d5db" font-size="26" font-family="Inter, 'Segoe UI', Arial, sans-serif">Request · Policy · Owner approval · Settlement</text>
+  <text x="96" y="328" fill="#9ca3af" font-size="24" font-family="Inter, 'Segoe UI', Arial, sans-serif">No hidden secrets for agents.</text>
+  <text x="96" y="360" fill="#9ca3af" font-size="24" font-family="Inter, 'Segoe UI', Arial, sans-serif">You keep the keys and the control.</text>
 
   <g transform="translate(100 380)" font-family="Inter, 'Segoe UI', Arial, sans-serif">
     <rect x="0" y="0" width="420" height="80" rx="16" fill="#14532d" fill-opacity="0.75" />
-    <text x="36" y="52" fill="#dcfce7" font-size="31" font-weight="700">Self-hosted</text>
+    <text x="36" y="50" fill="#dcfce7" font-size="30" font-weight="700">Self-hosted</text>
 
-    <rect x="490" y="0" width="420" height="80" rx="16" fill="#1e40af" fill-opacity="0.75" />
-    <text x="528" y="52" fill="#dbeafe" font-size="31" font-weight="700">Policy-first</text>
+    <rect x="480" y="0" width="420" height="80" rx="16" fill="#1e40af" fill-opacity="0.75" />
+    <text x="518" y="50" fill="#dbeafe" font-size="30" font-weight="700">Policy-first</text>
 
-    <rect x="880" y="0" width="420" height="80" rx="16" fill="#1d4ed8" fill-opacity="0.75" />
-    <text x="918" y="52" fill="#dbeafe" font-size="31" font-weight="700">Human approval</text>
+    <rect x="960" y="0" width="420" height="80" rx="16" fill="#1d4ed8" fill-opacity="0.75" />
+    <text x="998" y="50" fill="#dbeafe" font-size="30" font-weight="700">Human approval</text>
 
-    <rect x="1270" y="0" width="132" height="80" rx="16" fill="#0ea5e9" />
-    <text x="1300" y="52" fill="#e0f2fe" font-size="31" font-weight="700">TON</text>
+    <rect x="1260" y="0" width="132" height="80" rx="16" fill="#0ea5e9" />
+    <text x="1294" y="50" fill="#e0f2fe" font-size="30" font-weight="700">TON</text>
   </g>
 
   <text x="1228" y="596" fill="#94a3b8" font-size="22" font-family="Inter, 'Segoe UI', Arial, sans-serif">patronhill.ru</text>
