@@ -91,7 +91,7 @@ export class PaymentService {
     return this.approvals.decide(paymentId, approved ? "approved" : "rejected");
   }
 
-  /** Settle an approved/allowed payment on-chain. The executor enforces the hard floor. */
+  /** Settle an approved/allowed payment through the configured executor. */
   private async settle(rec: PaymentRecord): Promise<PaymentRecord> {
     try {
       const { txHash } = await this.executor.execute(rec);

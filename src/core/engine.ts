@@ -50,8 +50,8 @@ function ruleLabel(rule: Rule, index: number): string {
  * Evaluate a payment request against the policy.
  *
  * Order of checks (fail-closed):
- *   1. Kill switch / hard ceilings — mirror the on-chain limits. The server
- *      cannot exceed them, so we reject early with a clear reason.
+ *   1. Kill switch / hard ceilings — hard limits are enforced by local policy.
+ *      We reject early with a clear reason.
  *   2. Blocklist — always denies.
  *   3. Rules in order, first match wins.
  *   4. Default action if nothing matched.
@@ -64,7 +64,7 @@ export function evaluate(
 ): Decision {
   const amount = req.amount.value;
 
-  // 1. Hard ceilings — these are also enforced on-chain; here we fail fast.
+  // 1. Hard ceilings — local policy guardrails. We fail fast to avoid unnecessary work.
   if (!(amount > 0)) return deny("amount must be positive", null);
   if (policy.hard_limits.kill_switch) return deny("kill switch is active", null);
   if (amount > policy.hard_limits.per_tx_max) {

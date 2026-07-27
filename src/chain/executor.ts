@@ -12,9 +12,8 @@ export interface ExecutionResult {
 
 export interface Executor {
   /**
-   * Move funds for an already-approved payment. Implementations MUST treat their
-   * own on-chain limits as the source of truth and reject anything that would
-   * breach them, even if the server told them to proceed.
+   * Move funds for an already-approved payment. Implementations SHOULD validate
+   * chain-level limits and wallet rules before broadcasting.
    */
   execute(rec: PaymentRecord): Promise<ExecutionResult>;
 }

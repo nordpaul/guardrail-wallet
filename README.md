@@ -19,14 +19,14 @@ The sandbox is public and may be reset. Never submit secrets or personal data.
 You top up a balance. Your agent (shopping, paying bills, subscriptions) asks the
 wallet to pay. Small, trusted payments go through automatically; anything
 unusual pings your Telegram with **✅ Approve / ❌ Reject**. Hard limits are
-enforced on-chain, so even a hacked server can't drain you past the daily cap.
+applied in local policy first, so over-limit requests are rejected before execution.
 
 > The agent is never trusted. It can only *ask*. The wallet decides. See
 > [SECURITY.md](./SECURITY.md) for the full threat model and
 > [USAGE.md](./USAGE.md) for the step-by-step operating guide.
 
 ```
-agent ──request──▶ guardrail wallet ──▶ policy engine ──┬─ allow ─▶ settle on-chain
+agent ──request──▶ guardrail wallet ──▶ policy engine ──┬─ allow ─▶ settle via executor
                                                         ├─ deny  ─▶ 402 + reason
                                                         └─ ask   ─▶ Telegram ✅/❌ ─▶ settle
 ```
@@ -34,7 +34,8 @@ agent ──request──▶ guardrail wallet ──▶ policy engine ──┬�
 - **Crypto is hidden.** You see a `$` balance; under the hood it's stablecoin
   (USDT on TON by default). The chain layer is pluggable.
 - **Hybrid enforcement.** Soft rules (categories, allowlists, new-recipient) run
-  on the server; hard ceilings (per-tx, daily cap, freeze) run on-chain.
+  on the server; hard ceilings (per-tx, daily cap, freeze) run in policy now,
+  with optional chain-side guardrails planned for extra protection.
 - **Self-hosted & open source.** One Docker container + a `policy.yaml`. MIT.
 
 ## Quickstart (no chain, 2 minutes)

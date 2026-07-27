@@ -2,7 +2,7 @@
 # control surface — the agent never sees or changes it.
 #
 # Decision order (fail-closed):
-#   1. kill_switch / hard_limits  -> these mirror the on-chain ceiling
+#   1. kill_switch / hard_limits  -> these are enforced by policy first
 #   2. blocklist                  -> always deny
 #   3. rules (first match wins)
 #   4. default
@@ -11,8 +11,8 @@
 currency_display: USD     # what you see; settled in stablecoin (USDT on TON) under the hood
 chain: ton
 
-# Hard ceiling. Also enforced on-chain by the guardrail extension, so even a
-# fully compromised server cannot exceed these. Worst case = daily_max per day.
+# Hard ceiling in policy. These limits are enforced locally before executor calls.
+# A chain-side guardrail extension can mirror them for additional defense in depth.
 hard_limits:
   per_tx_max: 200
   daily_max: 500

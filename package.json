@@ -1,7 +1,7 @@
 {
   "name": "guardrail-wallet",
   "version": "0.1.0",
-  "description": "Self-hosted guardrail wallet: an AI agent requests payments, hard limits are enforced on-chain, and you sign off from Telegram.",
+  "description": "Self-hosted guardrail wallet: an AI agent requests payments, hard limits are enforced by local policy, with optional chain-level enforcement.",
   "type": "module",
   "license": "MIT",
   "engines": {
