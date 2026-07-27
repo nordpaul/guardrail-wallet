@@ -1,6 +1,8 @@
 node_modules/
 dist/
 *.log
+test-results/
+playwright-report/
 
 # local tooling
 .claude/

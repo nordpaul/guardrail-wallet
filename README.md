@@ -74,6 +74,18 @@ Try `"amount": { "value": 150 }` to a new address with no category → you'll ge
 curl localhost:8787/v1/payments/<payment_id> -H "Authorization: Bearer <key>"
 ```
 
+## Test suite
+
+```bash
+npm test                 # policy, service lifecycle, API, auth, SEO routes
+npm run test:e2e         # Chromium checks against E2E_BASE_URL or patronhill.ru
+npm run test:smoke       # HTTPS + safe stub payment lifecycle in production
+npm run test:all         # all three suites
+```
+
+The production smoke test creates a fake `EXECUTOR=stub` request and rejects it
+through the owner API. It never broadcasts a blockchain transaction.
+
 ## Web dashboard
 
 Set `DASHBOARD_TOKEN` in `.env` (a secret **different** from `AGENT_API_KEY`),
