@@ -1,41 +1,67 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="620" viewBox="0 0 1600 620" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="620" viewBox="0 0 1400 620" role="img" aria-labelledby="title desc">
   <title id="title">Guardrail Wallet</title>
-  <desc id="desc">Guardrail Wallet marketing banner.</desc>
+  <desc id="desc">Brand hero in Guardrail Wallet style.</desc>
+
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#020617" />
-      <stop offset="50%" stop-color="#111827" />
-      <stop offset="100%" stop-color="#172554" />
+    <linearGradient id="paper" x1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f3efdf"/>
+      <stop offset="100%" stop-color="#ece7d4"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#22c55e" />
-      <stop offset="100%" stop-color="#3b82f6" />
+    <linearGradient id="acid" x1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c9ff45"/>
+      <stop offset="100%" stop-color="#a6e93e"/>
     </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="7" stdDeviation="8" flood-color="#172019" flood-opacity="0.2" />
+    </filter>
   </defs>
-  <rect width="1600" height="620" fill="url(#bg)" />
-  <rect x="56" y="56" width="1488" height="508" rx="24" fill="#0f172a" fill-opacity="0.92" />
-  <rect x="56" y="56" width="1488" height="8" rx="4" fill="url(#accent)" />
 
-  <text x="96" y="140" fill="#e5e7eb" font-size="58" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-weight="800">Guardrail Wallet</text>
-  <text x="96" y="205" fill="#94a3b8" font-size="30" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-weight="500">Safe payment control for AI agents</text>
+  <rect width="1400" height="620" fill="url(#paper)"/>
+  <rect x="40" y="40" width="1320" height="540" rx="24" fill="#f9f6e9" fill-opacity="0.95" stroke="#172019" stroke-width="2"/>
 
-  <text x="96" y="286" fill="#d1d5db" font-size="26" font-family="Inter, 'Segoe UI', Arial, sans-serif">Request · Policy · Owner approval · Settlement</text>
-  <text x="96" y="328" fill="#9ca3af" font-size="24" font-family="Inter, 'Segoe UI', Arial, sans-serif">No hidden secrets for agents.</text>
-  <text x="96" y="360" fill="#9ca3af" font-size="24" font-family="Inter, 'Segoe UI', Arial, sans-serif">You keep the keys and the control.</text>
-
-  <g transform="translate(100 380)" font-family="Inter, 'Segoe UI', Arial, sans-serif">
-    <rect x="0" y="0" width="420" height="80" rx="16" fill="#14532d" fill-opacity="0.75" />
-    <text x="36" y="50" fill="#dcfce7" font-size="30" font-weight="700">Self-hosted</text>
-
-    <rect x="480" y="0" width="420" height="80" rx="16" fill="#1e40af" fill-opacity="0.75" />
-    <text x="518" y="50" fill="#dbeafe" font-size="30" font-weight="700">Policy-first</text>
-
-    <rect x="960" y="0" width="420" height="80" rx="16" fill="#1d4ed8" fill-opacity="0.75" />
-    <text x="998" y="50" fill="#dbeafe" font-size="30" font-weight="700">Human approval</text>
-
-    <rect x="1260" y="0" width="132" height="80" rx="16" fill="#0ea5e9" />
-    <text x="1294" y="50" fill="#e0f2fe" font-size="30" font-weight="700">TON</text>
+  <g filter="url(#shadow)">
+    <rect x="70" y="70" width="1260" height="480" rx="18" fill="#172019" fill-opacity="0.02" stroke="#172019" stroke-width="1.5"/>
   </g>
 
-  <text x="1228" y="596" fill="#94a3b8" font-size="22" font-family="Inter, 'Segoe UI', Arial, sans-serif">patronhill.ru</text>
+  <g>
+    <rect x="80" y="90" width="1260" height="52" rx="12" fill="#fffdf5" stroke="#172019" stroke-width="2"/>
+    <text x="112" y="125" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="2">GUARDRAIL WALLET</text>
+    <rect x="1180" y="102" width="130" height="22" rx="10" fill="url(#acid)" stroke="#172019" stroke-width="1.5"/>
+    <text x="1206" y="118" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="12" font-weight="700" letter-spacing="1">AI SAFE PAY</text>
+  </g>
+
+  <text x="80" y="200" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="74" font-weight="800" letter-spacing="-0.03em">PAYMENT</text>
+  <text x="80" y="270" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="74" font-weight="800" letter-spacing="-0.03em">FIREWALL</text>
+  <text x="80" y="340" fill="#556057" font-family="DM Mono, monospace" font-size="28" font-weight="500">for AI agents that request money the right way.</text>
+
+  <rect x="80" y="390" width="360" height="56" rx="16" fill="#c9ff45" stroke="#172019" stroke-width="2"/>
+  <text x="130" y="428" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="21" font-weight="700">REQUEST, POLICY, APPROVE</text>
+
+  <g font-family="DM Mono, monospace" font-size="18" fill="#172019" opacity="0.9">
+    <text x="80" y="492">01) Agent sends a bounded request.</text>
+    <text x="80" y="522">02) Policy engine decides deterministic.</text>
+    <text x="80" y="552">03) Owner approves high-risk flows.</text>
+  </g>
+
+  <!-- right dial -->
+  <g transform="translate(980 280)">
+    <circle cx="140" cy="80" r="150" fill="none" stroke="#172019" stroke-width="2"/>
+    <circle cx="140" cy="80" r="118" fill="#fff" stroke="#172019" stroke-width="2"/>
+    <circle cx="140" cy="80" r="88" fill="#f0643b" opacity="0.45"/>
+    <rect x="88" y="52" width="104" height="28" rx="14" fill="#fffdf5" stroke="#172019" stroke-width="2"/>
+    <text x="109" y="71" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="11" font-weight="700">BYPASS=0</text>
+
+    <g transform="rotate(285 140 80)">
+      <line x1="140" y1="80" x2="140" y2="20" stroke="#f0643b" stroke-width="10" stroke-linecap="round" />
+    </g>
+    <circle cx="140" cy="80" r="8" fill="#172019"/>
+
+    <text x="90" y="286" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.2em">HUMAN-CONTROLLED</text>
+    <text x="90" y="302" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.2em">FLOW</text>
+  </g>
+
+  <g transform="translate(0 576)">
+    <text x="80" y="22" fill="#172019" font-family="DM Mono, monospace" font-size="14" font-weight="500">Live demo: patronhill.ru</text>
+    <line x1="370" y1="21" x2="1320" y2="21" stroke="#172019" stroke-width="1" opacity="0.6"/>
+  </g>
 </svg>

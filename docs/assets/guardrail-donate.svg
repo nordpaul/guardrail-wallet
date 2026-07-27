@@ -1,24 +1,43 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1400" height="380" viewBox="0 0 1400 380" role="img" aria-labelledby="title desc">
   <title id="title">Support Guardrail Wallet</title>
-  <desc id="desc">Support card for Guardrail Wallet donation.</desc>
+  <desc id="desc">Support card in Guardrail Wallet site style.</desc>
+
   <defs>
-    <linearGradient id="don" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#1e293b" />
+    <linearGradient id="support" x1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0643b"/>
+      <stop offset="100%" stop-color="#f3efdf"/>
     </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="4" dy="6" stdDeviation="7" flood-color="#172019" flood-opacity="0.24"/>
+    </filter>
   </defs>
-  <rect width="1400" height="380" fill="url(#don)" />
-  <rect x="48" y="40" width="1304" height="300" rx="24" fill="#111827" fill-opacity="0.95" />
-  <rect x="48" y="40" width="1304" height="8" fill="#06b6d4" />
 
-  <text x="96" y="118" fill="#f1f5f9" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="48" font-weight="800">Support this project</text>
-  <text x="96" y="165" fill="#94a3b8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24">Open-source project, no AI agent gets</text>
-  <text x="96" y="198" fill="#94a3b8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24">owner-level keys or private money access.</text>
-  <text x="96" y="235" fill="#94a3b8" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="24">Your support keeps Guardrail Wallet safe.</text>
+  <rect width="1400" height="380" fill="#f3efdf"/>
+  <g filter="url(#soft)">
+    <rect x="44" y="40" width="1312" height="300" rx="24" fill="#111813" stroke="#172019" stroke-width="2"/>
+  </g>
+  <rect x="70" y="68" width="1260" height="248" rx="16" fill="#111813" fill-opacity="0.03" stroke="#172019" stroke-width="1.5"/>
 
-  <rect x="96" y="230" width="340" height="82" rx="18" fill="#06b6d4" />
-  <text x="152" y="287" fill="#082f49" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="32" font-weight="800">TON support wallet</text>
+  <text x="88" y="122" fill="#f0643b" font-family="Syne, Arial, sans-serif" font-size="26" font-weight="700" letter-spacing="1">SUPPORT THE PROJECT</text>
+  <text x="88" y="164" fill="#f3efdf" font-family="Syne, Arial, sans-serif" font-size="58" font-weight="800" letter-spacing="-0.02em">KEEP THE GUARDRAIL</text>
+  <text x="88" y="218" fill="#fffdf5" font-family="Syne, Arial, sans-serif" font-size="58" font-weight="800" letter-spacing="-0.02em">MOVING.</text>
 
-  <text x="96" y="330" fill="#64748b" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="22">Donations fund support, docs, audits,</text>
-  <text x="96" y="354" fill="#64748b" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="22">and deployment hardening.</text>
+  <rect x="88" y="248" width="430" height="48" rx="12" fill="#c9ff45" stroke="#172019" stroke-width="1.5"/>
+  <text x="122" y="279" fill="#172019" font-family="DM Mono, monospace" font-size="18" font-weight="700">TON SUPPORT WALLET</text>
+
+  <rect x="88" y="308" width="240" height="20" fill="#c9ff45"/>
+  <text x="96" y="322" fill="#111813" font-family="DM Mono, monospace" font-size="10" font-weight="700" letter-spacing=".12em">CLICK TO SUPPORT WITH TON</text>
+
+  <rect x="620" y="90" width="700" height="210" rx="18" fill="#f3efdf" stroke="#f0643b" stroke-width="2"/>
+  <text x="656" y="132" fill="#172019" font-family="Syne, Arial, sans-serif" font-size="28" font-weight="700">Open-source funding</text>
+  <text x="656" y="170" fill="#556057" font-family="DM Mono, monospace" font-size="22">• Security hardening</text>
+  <text x="656" y="205" fill="#556057" font-family="DM Mono, monospace" font-size="22">• Public demo uptime</text>
+  <text x="656" y="240" fill="#556057" font-family="DM Mono, monospace" font-size="22">• Docs, audit, releases</text>
+
+  <g transform="translate(656 265)">
+    <rect x="0" y="0" width="320" height="34" rx="10" fill="#172019"/>
+    <text x="20" y="24" fill="#fffdf5" font-family="DM Mono, monospace" font-size="11" font-weight="700">UQCLbq0UGD65ljHQGlqF5pNgMAWDgE...</text>
+  </g>
+
+  <text x="96" y="358" fill="#8d968b" font-family="DM Mono, monospace" font-size="16">Every ton matters. No one gets agent secrets from this wallet.</text>
 </svg>
