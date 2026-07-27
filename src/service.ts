@@ -41,6 +41,7 @@ export class PaymentService {
       currency: req.amount.currency,
       category: req.category ?? null,
       memo: req.memo ?? null,
+      purchase: req.purchase ?? null,
       status: decision.action === "deny" ? "rejected" : "pending_approval",
       decision,
       txHash: null,

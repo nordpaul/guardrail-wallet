@@ -38,6 +38,20 @@ const payload = (key: string, amount = 10, category?: string) => ({
   memo: "Automated integration test",
 });
 
+const payloadWithPurchase = (key: string, amount = 10, category?: string) => ({
+  ...payload(key, amount, category),
+  purchase: {
+    order_id: "order-001",
+    checkout_id: "checkout-001",
+    cart_id: "cart-001",
+    description: "Starter bundle",
+    line_items: [
+      { name: "Coffee beans", unit_amount: 6.5, quantity: 2, currency: "USD" },
+      { name: "Milk", unit_amount: 4.5, quantity: 1, currency: "USD" },
+    ],
+  },
+});
+
 const agentRequest = (body: object) => ({
   method: "POST",
   headers: { authorization: `Bearer ${AGENT_KEY}`, "content-type": "application/json" },
@@ -99,6 +113,46 @@ describe("agent API", () => {
       headers: { authorization: `Bearer ${AGENT_KEY}` },
     });
     expect(await polled.json()).toMatchObject({ status: "executed" });
+  });
+
+  it("accepts purchase snapshots and exposes them on status reads", async () => {
+    const { app } = setup();
+    const requested = await app.request(
+      "/v1/payments/request",
+      agentRequest(payloadWithPurchase("api-purchase", 12.5, "groceries")),
+    );
+    const reqBody = await requested.json();
+
+    expect(reqBody.purchase).toEqual({
+      order_id: "order-001",
+      checkout_id: "checkout-001",
+      cart_id: "cart-001",
+      item_count: 2,
+    });
+
+    const admin = await app.request("/admin/payments", {
+      headers: { authorization: `Bearer ${OWNER_KEY}` },
+    });
+    const adminBody = await admin.json();
+    expect(adminBody.payments).toHaveLength(1);
+    expect(adminBody.payments[0]).toMatchObject({
+      payment_id: reqBody.payment_id,
+      purchase: {
+        order_id: "order-001",
+        item_count: 2,
+      },
+    });
+
+    const byId = await app.request(`/v1/payments/${reqBody.payment_id}`, {
+      headers: { authorization: `Bearer ${AGENT_KEY}` },
+    });
+    expect(await byId.json()).toMatchObject({
+      status: "executed",
+      purchase: {
+        order_id: "order-001",
+        item_count: 2,
+      },
+    });
   });
 });
 

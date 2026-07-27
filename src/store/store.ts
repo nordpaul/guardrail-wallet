@@ -15,6 +15,7 @@ interface Row {
   currency: string;
   category: string | null;
   memo: string | null;
+  purchase_snapshot: string | null;
   status: PaymentStatus;
   decision: string;
   tx_hash: string | null;
@@ -40,6 +41,7 @@ export class Store {
         currency         TEXT NOT NULL,
         category         TEXT,
         memo             TEXT,
+        purchase_snapshot TEXT,
         status           TEXT NOT NULL,
         decision         TEXT NOT NULL,
         tx_hash          TEXT,
@@ -49,6 +51,21 @@ export class Store {
       CREATE INDEX IF NOT EXISTS idx_payments_recipient ON payments(recipient_address);
       CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status);
     `);
+
+    const columns = this.db.prepare("PRAGMA table_info(payments)").all() as { name: string }[];
+    const hasPurchaseSnapshot = columns.some((row) => row.name === "purchase_snapshot");
+    if (!hasPurchaseSnapshot) {
+      this.db.exec("ALTER TABLE payments ADD COLUMN purchase_snapshot TEXT");
+    }
+  }
+
+  private parsePurchase(snapshot: string | null) {
+    if (!snapshot) return null;
+    try {
+      return JSON.parse(snapshot);
+    } catch {
+      return null;
+    }
   }
 
   private toRecord(r: Row): PaymentRecord {
@@ -61,6 +78,7 @@ export class Store {
       currency: r.currency,
       category: r.category,
       memo: r.memo,
+      purchase: this.parsePurchase(r.purchase_snapshot),
       status: r.status,
       decision: JSON.parse(r.decision),
       txHash: r.tx_hash,
@@ -74,10 +92,10 @@ export class Store {
       .prepare(
         `INSERT INTO payments
           (id, idempotency_key, recipient_address, merchant_id, amount, currency,
-           category, memo, status, decision, tx_hash, created_at, resolved_at)
+           category, memo, purchase_snapshot, status, decision, tx_hash, created_at, resolved_at)
          VALUES
           (@id, @idempotency_key, @recipient_address, @merchant_id, @amount, @currency,
-           @category, @memo, @status, @decision, @tx_hash, @created_at, @resolved_at)`,
+           @category, @memo, @purchase_snapshot, @status, @decision, @tx_hash, @created_at, @resolved_at)`,
       )
       .run({
         id: rec.id,
@@ -88,6 +106,7 @@ export class Store {
         currency: rec.currency,
         category: rec.category,
         memo: rec.memo,
+        purchase_snapshot: rec.purchase ? JSON.stringify(rec.purchase) : null,
         status: rec.status,
         decision: JSON.stringify(rec.decision),
         tx_hash: rec.txHash,

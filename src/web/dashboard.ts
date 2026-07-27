@@ -75,17 +75,22 @@ export const dashboardHtml = `<!doctype html>
         ? '<div class="row-actions"><button class="approve" onclick="decide(\\'' + p.payment_id + '\\',true)">Approve</button>'
           + '<button class="reject" onclick="decide(\\'' + p.payment_id + '\\',false)">Reject</button></div>'
         : '';
+      const purchaseSummary = p.purchase
+        ? '<div class="mono">' + h(p.purchase.order_id || p.purchase.checkout_id || p.purchase.cart_id || '') + '</div>'
+          + h(p.purchase.item_count) + ' items'
+        : '<span class="sub">—</span>';
       return '<tr>'
         + '<td><b>' + h(p.amount.value) + '</b> ' + h(p.amount.currency) + '</td>'
         + '<td><div class="mono">' + h(p.recipient) + '</div>'
           + (p.category ? h(p.category) : '<span class="sub">—</span>')
           + (isNew ? ' <span class="new">NEW</span>' : '') + '</td>'
+        + '<td>' + purchaseSummary + '</td>'
         + '<td><span class="badge ' + p.status + '">' + p.status.replace('_',' ') + '</span></td>'
         + '<td class="sub">' + h(p.reason || '') + '</td>'
         + '<td>' + actions + '</td>'
         + '</tr>';
     }).join('');
-    $('list').innerHTML = '<table><thead><tr><th>Amount</th><th>Recipient</th><th>Status</th><th>Reason</th><th></th></tr></thead><tbody>' + body + '</tbody></table>';
+    $('list').innerHTML = '<table><thead><tr><th>Amount</th><th>Recipient</th><th>Purchase</th><th>Status</th><th>Reason</th><th></th></tr></thead><tbody>' + body + '</tbody></table>';
   }
 
   async function load() {

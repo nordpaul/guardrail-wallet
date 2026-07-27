@@ -27,6 +27,24 @@ const requestSchema = z.object({
   agent_context: z
     .object({ source_url: z.string().optional(), reasoning: z.string().optional() })
     .optional(),
+  purchase: z
+    .object({
+      order_id: z.string().optional(),
+      checkout_id: z.string().optional(),
+      cart_id: z.string().optional(),
+      description: z.string().optional(),
+      line_items: z
+        .array(
+          z.object({
+            name: z.string().min(1),
+            unit_amount: z.number().positive(),
+            quantity: z.number().int().positive(),
+            currency: z.string().min(1),
+          }),
+        )
+        .optional(),
+    })
+    .optional(),
 });
 
 function toPaymentRequest(b: z.infer<typeof requestSchema>): PaymentRequest {
@@ -38,6 +56,22 @@ function toPaymentRequest(b: z.infer<typeof requestSchema>): PaymentRequest {
     memo: b.memo,
     agentContext: b.agent_context
       ? { sourceUrl: b.agent_context.source_url, reasoning: b.agent_context.reasoning }
+      : undefined,
+    purchase: b.purchase
+      ? {
+          orderId: b.purchase.order_id,
+          checkoutId: b.purchase.checkout_id,
+          cartId: b.purchase.cart_id,
+          description: b.purchase.description,
+          lineItems: b.purchase.line_items
+            ? b.purchase.line_items.map((item) => ({
+                name: item.name,
+                unitAmount: item.unit_amount,
+                quantity: item.quantity,
+                currency: item.currency,
+              }))
+            : undefined,
+        }
       : undefined,
   };
 }
@@ -91,6 +125,14 @@ export function buildApi(
         reason: r.decision.reasons.join("; "),
         tx_hash: r.txHash,
         recipient_known: wasKnown(r),
+        purchase: r.purchase
+          ? {
+              order_id: r.purchase.orderId,
+              checkout_id: r.purchase.checkoutId,
+              cart_id: r.purchase.cartId,
+              item_count: r.purchase.lineItems?.length ?? 0,
+            }
+          : null,
         created_at: r.createdAt,
       })),
     });
@@ -143,6 +185,14 @@ export function buildApi(
         tx_hash: rec.txHash,
         decision: rec.decision.action,
         reason: rec.decision.reasons.join("; "),
+        purchase: rec.purchase
+          ? {
+              order_id: rec.purchase.orderId,
+              checkout_id: rec.purchase.checkoutId,
+              cart_id: rec.purchase.cartId,
+              item_count: rec.purchase.lineItems?.length ?? 0,
+            }
+          : null,
       },
       code,
     );
@@ -156,6 +206,15 @@ export function buildApi(
       status: rec.status,
       amount: { value: rec.amount, currency: rec.currency },
       recipient: rec.recipientAddress,
+      purchase: rec.purchase
+        ? {
+            order_id: rec.purchase.orderId,
+            checkout_id: rec.purchase.checkoutId,
+            cart_id: rec.purchase.cartId,
+            description: rec.purchase.description,
+            item_count: rec.purchase.lineItems?.length ?? 0,
+          }
+        : null,
       tx_hash: rec.txHash,
       decision: rec.decision.action,
       reason: rec.decision.reasons.join("; "),
