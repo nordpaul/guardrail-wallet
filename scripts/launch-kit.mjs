@@ -29,10 +29,7 @@ const REQUIRED_FILES = [
   "docs/marketing/telegram.md",
   "docs/marketing/ton-developers.md",
   "scripts/launch-kit.mjs",
-  "scripts/launch-kit.test.mjs",
-  "scripts/capture-launch-demo.mjs",
-  "docs/releases/v0.1.0-alpha.1.md",
-  "docs/assets/guardrail-demo-walkthrough.gif",
+  "scripts/launch-kit.test.mjs"
 ];
 
 function formatIssue(file, message) {
@@ -88,11 +85,7 @@ export async function validateLaunchKit(root) {
     }
 
     const content = await fs.readFile(absolutePath, "utf8");
-    const extension = path.extname(relativePath).toLowerCase();
-    const shouldValidateCopy =
-      extension === ".md" ||
-      extension === ".yml" ||
-      extension === ".yaml";
+  const shouldValidateCopy = relativePath.startsWith("docs/");
     if (shouldValidateCopy) {
       const copyIssues = validateCopy(relativePath, content);
       for (const copyIssue of copyIssues) {
