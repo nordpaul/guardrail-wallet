@@ -20,18 +20,22 @@ export interface PaymentRequest {
   memo?: string;
   /** Whatever the agent claims about the payment. NEVER trusted for security decisions. */
   agentContext?: { sourceUrl?: string; reasoning?: string };
-  purchase?: {
-    orderId?: string;
-    checkoutId?: string;
-    cartId?: string;
-    description?: string;
-    lineItems?: {
-      name: string;
-      unitAmount: number;
-      quantity: number;
-      currency: string;
-    }[];
-  };
+  purchase?: PurchaseSnapshot;
+}
+
+export interface PurchaseLineItem {
+  name: string;
+  unitAmount: number;
+  quantity: number;
+  currency: string;
+}
+
+export interface PurchaseSnapshot {
+  orderId?: string;
+  checkoutId?: string;
+  cartId?: string;
+  description?: string;
+  lineItems?: PurchaseLineItem[];
 }
 
 export type DecisionAction = "allow" | "deny" | "require_approval";
@@ -67,18 +71,7 @@ export interface PaymentRecord {
   currency: string;
   category: string | null;
   memo: string | null;
-  purchase: {
-    orderId?: string;
-    checkoutId?: string;
-    cartId?: string;
-    description?: string;
-    lineItems?: {
-      name: string;
-      unitAmount: number;
-      quantity: number;
-      currency: string;
-    }[];
-  } | null;
+  purchase: PurchaseSnapshot | null;
   status: PaymentStatus;
   decision: Decision;
   /** On-chain transaction hash once settled. */

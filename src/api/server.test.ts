@@ -119,7 +119,7 @@ describe("agent API", () => {
     const { app } = setup();
     const requested = await app.request(
       "/v1/payments/request",
-      agentRequest(payloadWithPurchase("api-purchase", 12.5, "groceries")),
+      agentRequest(payloadWithPurchase("api-purchase", 17.5, "groceries")),
     );
     const reqBody = await requested.json();
 
@@ -128,6 +128,7 @@ describe("agent API", () => {
       checkout_id: "checkout-001",
       cart_id: "cart-001",
       item_count: 2,
+      item_total: 17.5,
     });
 
     const admin = await app.request("/admin/payments", {
@@ -140,6 +141,7 @@ describe("agent API", () => {
       purchase: {
         order_id: "order-001",
         item_count: 2,
+        item_total: 17.5,
       },
     });
 
@@ -151,8 +153,18 @@ describe("agent API", () => {
       purchase: {
         order_id: "order-001",
         item_count: 2,
+        item_total: 17.5,
       },
     });
+  });
+
+  it("validates purchase line item total against payment amount", async () => {
+    const { app } = setup();
+    const mismatched = payloadWithPurchase("api-purchase-mismatch", 12.5, "groceries");
+    const res = await app.request("/v1/payments/request", agentRequest(mismatched));
+
+    expect(res.status).toBe(400);
+    expect(await res.json()).toMatchObject({ error: "invalid_request" });
   });
 });
 

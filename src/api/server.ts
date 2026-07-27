@@ -12,7 +12,15 @@ import { robotsTxt, sitemapXml } from "../web/seo.js";
 // poll its status. The bearer token grants the right to *ask*, never to spend.
 // ---------------------------------------------------------------------------
 
-const requestSchema = z.object({
+const purchaseItemSchema = z.object({
+  name: z.string().min(1),
+  unit_amount: z.number().positive(),
+  quantity: z.number().int().positive(),
+  currency: z.string().min(1),
+});
+
+const requestSchema = z
+  .object({
   idempotency_key: z.string().min(1),
   recipient: z.object({
     address: z.string().min(1),
@@ -34,18 +42,45 @@ const requestSchema = z.object({
       cart_id: z.string().optional(),
       description: z.string().optional(),
       line_items: z
-        .array(
-          z.object({
-            name: z.string().min(1),
-            unit_amount: z.number().positive(),
-            quantity: z.number().int().positive(),
-            currency: z.string().min(1),
-          }),
-        )
+        .array(purchaseItemSchema)
         .optional(),
     })
     .optional(),
-});
+  })
+  .superRefine((value, ctx) => {
+    const items = value.purchase?.line_items;
+    if (!items || items.length === 0) return;
+
+    const lineTotal = items.reduce((sum, item) => sum + item.unit_amount * item.quantity, 0);
+    if (Math.round(lineTotal * 100) !== Math.round(value.amount.value * 100)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message:
+          `purchase total ${lineTotal} does not match payment amount ${value.amount.value}`,
+        path: ["purchase", "line_items"],
+      });
+    }
+
+    for (const item of items) {
+      if (item.currency !== value.amount.currency) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message:
+            `line item currency ${item.currency} does not match payment currency ${value.amount.currency}`,
+          path: ["purchase", "line_items"],
+        });
+        break;
+      }
+    }
+  });
+
+function purchaseLineSummary(
+  lineItems: { unitAmount: number; quantity: number }[] | null | undefined,
+) {
+  const itemCount = lineItems?.length ?? 0;
+  const itemTotal = lineItems ? lineItems.reduce((sum, item) => sum + item.unitAmount * item.quantity, 0) : 0;
+  return { itemCount, itemTotal };
+}
 
 function toPaymentRequest(b: z.infer<typeof requestSchema>): PaymentRequest {
   return {
@@ -127,10 +162,13 @@ export function buildApi(
         recipient_known: wasKnown(r),
         purchase: r.purchase
           ? {
+              amount: r.amount,
+              currency: r.currency,
               order_id: r.purchase.orderId,
               checkout_id: r.purchase.checkoutId,
               cart_id: r.purchase.cartId,
-              item_count: r.purchase.lineItems?.length ?? 0,
+              item_count: purchaseLineSummary(r.purchase.lineItems).itemCount,
+              item_total: purchaseLineSummary(r.purchase.lineItems).itemTotal,
             }
           : null,
         created_at: r.createdAt,
@@ -187,10 +225,13 @@ export function buildApi(
         reason: rec.decision.reasons.join("; "),
         purchase: rec.purchase
           ? {
+              amount: rec.amount,
+              currency: rec.currency,
               order_id: rec.purchase.orderId,
               checkout_id: rec.purchase.checkoutId,
               cart_id: rec.purchase.cartId,
-              item_count: rec.purchase.lineItems?.length ?? 0,
+              item_count: purchaseLineSummary(rec.purchase.lineItems).itemCount,
+              item_total: purchaseLineSummary(rec.purchase.lineItems).itemTotal,
             }
           : null,
       },
@@ -208,11 +249,14 @@ export function buildApi(
       recipient: rec.recipientAddress,
       purchase: rec.purchase
         ? {
+            amount: rec.amount,
+            currency: rec.currency,
             order_id: rec.purchase.orderId,
             checkout_id: rec.purchase.checkoutId,
             cart_id: rec.purchase.cartId,
             description: rec.purchase.description,
-            item_count: rec.purchase.lineItems?.length ?? 0,
+            item_count: purchaseLineSummary(rec.purchase.lineItems).itemCount,
+            item_total: purchaseLineSummary(rec.purchase.lineItems).itemTotal,
           }
         : null,
       tx_hash: rec.txHash,
