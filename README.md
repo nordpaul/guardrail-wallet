@@ -1,13 +1,13 @@
 # Guardrail Wallet
 
-[Live demo](https://patronhill.ru) | [Documentation](https://patronhill.ru/docs) | [Русская документация](https://patronhill.ru/docs/ru) | [API reference](https://patronhill.ru/api) | [Roadmap](./ROADMAP.md) | [План на русском](./docs/ROADMAP.ru.md) | [Agent integration](./AGENTS.md) | [Security model](./SECURITY.md)
+[Live demo](https://patronhill.ru) | [Early-access launch](./docs/LAUNCH.md) | [Documentation](https://patronhill.ru/docs) | [Русская документация](https://patronhill.ru/docs/ru) | [API reference](https://patronhill.ru/api) | [Roadmap](./ROADMAP.md) | [План на русском](./docs/ROADMAP.ru.md) | [Agent integration](./AGENTS.md) | [Security model](./SECURITY.md)
 
 <p align="center">
   <a href="https://patronhill.ru" target="_blank" rel="noopener noreferrer">
     <img src="./docs/assets/guardrail-banner-v2.svg" alt="Guardrail Wallet banner" width="100%" style="max-width: 1200px; border: 2px solid #172019;">
   </a>
 </p>
-<p align="center"><strong><a href="https://patronhill.ru">Открыть демо</a> · <a href="/docs">Посмотреть документацию</a></strong></p>
+<p align="center"><strong><a href="https://patronhill.ru">Открыть демо</a> · <a href="https://patronhill.ru/docs">Посмотреть документацию</a></strong></p>
 
 ![GitHub stars](https://img.shields.io/github/stars/nordpaul/guardrail-wallet?style=for-the-badge&logo=github) 
 ![License](https://img.shields.io/github/license/nordpaul/guardrail-wallet?style=for-the-badge)
@@ -173,6 +173,11 @@ Early. The off-chain core (engine, API, approvals, store) works and is tested.
 The on-chain TON executor and guardrail contract are the next milestone — see
 the roadmap in the README discussion / issues. **Don't put large mainnet
 balances behind it yet.**
+
+If you want to help shape the early-access launch, follow the checklist in
+[docs/LAUNCH.md](./docs/LAUNCH.md) and report blockers in GitHub issues.
+Please include OS, Node/Docker versions, and exact command output so fixes are
+repeatable.
 
 ## Support this project
 
