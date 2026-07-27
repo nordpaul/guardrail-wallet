@@ -1,6 +1,6 @@
 # Guardrail Wallet
 
-[Live demo](http://129.159.133.143) | [Agent integration](./AGENTS.md) | [Security model](./SECURITY.md)
+[Live demo](https://patronhill.ru) | [Documentation](https://patronhill.ru/docs) | [Русская документация](https://patronhill.ru/docs/ru) | [API reference](https://patronhill.ru/api) | [Agent integration](./AGENTS.md) | [Security model](./SECURITY.md)
 
 **A self-hosted wallet that lets an AI agent spend money — within limits you set, with you signing off from Telegram.**
 
@@ -12,7 +12,7 @@
 
 - Agent API key: `guardrail-demo-agent`
 - Dashboard owner token: `guardrail-demo-owner`
-- Dashboard: `http://129.159.133.143/dashboard`
+- Dashboard: `https://patronhill.ru/dashboard`
 
 The sandbox is public and may be reset. Never submit secrets or personal data.
 
@@ -77,7 +77,7 @@ curl localhost:8787/v1/payments/<payment_id> -H "Authorization: Bearer <key>"
 ## Web dashboard
 
 Set `DASHBOARD_TOKEN` in `.env` (a secret **different** from `AGENT_API_KEY`),
-then open `http://localhost:<PORT>/`. You get a live list of payments and
+then open `http://localhost:<PORT>/dashboard`. You get a live list of payments and
 **Approve / Reject** buttons for anything pending — a browser alternative to
 Telegram. Enter the owner token once; it's kept in the browser.
 
@@ -157,6 +157,14 @@ it maintained:
 
 - TON: `UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ`
 - Tonkeeper: [Support Guardrail Wallet](https://app.tonkeeper.com/transfer/UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ?text=Support%20Guardrail%20Wallet)
+
+## Documentation
+
+- [How the public demo works](./docs/DEMO.md)
+- [Как работает публичное демо](./docs/DEMO.ru.md)
+- [Complete Agent API reference](./docs/API.md)
+- [Production deployment guide](./docs/DEPLOYMENT.md)
+- [Search engine submission guide](./docs/SEARCH-SETUP.md)
 
 ## License
 

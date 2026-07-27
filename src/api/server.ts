@@ -3,7 +3,9 @@ import { z } from "zod";
 import type { PaymentService } from "../service.js";
 import type { PaymentRecord, PaymentRequest } from "../types.js";
 import { dashboardHtml } from "../web/dashboard.js";
+import { apiDocsHtml, docsEnglishHtml, docsRussianHtml } from "../web/docs.js";
 import { landingHtml } from "../web/landing.js";
+import { robotsTxt, sitemapXml } from "../web/seo.js";
 
 // ---------------------------------------------------------------------------
 // The narrow API the agent talks to. Deliberately boring: request a payment,
@@ -53,7 +55,14 @@ export function buildApi(
   // The page itself is public (no secret in it); every data/action call below
   // is gated by the OWNER token, which is distinct from the agent API key.
   app.get("/", (c) => c.html(landingHtml));
+  app.get("/docs", (c) => c.html(docsEnglishHtml));
+  app.get("/docs/ru", (c) => c.html(docsRussianHtml));
+  app.get("/api", (c) => c.html(apiDocsHtml));
   app.get("/dashboard", (c) => c.html(dashboardHtml));
+  app.get("/robots.txt", (c) => c.text(robotsTxt));
+  app.get("/sitemap.xml", (c) =>
+    c.body(sitemapXml, 200, { "Content-Type": "application/xml; charset=utf-8" }),
+  );
 
   app.use("/admin/*", async (c, next) => {
     if (!dashboardToken) return c.json({ error: "dashboard_disabled" }, 503);
