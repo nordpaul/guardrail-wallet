@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://patronhill.ru" target="_blank" rel="noopener noreferrer">
-    <img src="./docs/assets/guardrail-banner.svg" alt="Guardrail Wallet banner" width="100%" style="max-width: 1200px; border: 2px solid #172019;">
+    <img src="./docs/assets/guardrail-banner-v2.svg" alt="Guardrail Wallet banner" width="100%" style="max-width: 1200px; border: 2px solid #172019;">
   </a>
 </p>
 <p align="center"><strong><a href="https://patronhill.ru">Открыть демо</a> · <a href="/docs">Посмотреть документацию</a></strong></p>
@@ -178,7 +178,7 @@ balances behind it yet.**
 
 <p align="center">
   <a href="https://app.tonkeeper.com/transfer/UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ?text=Support%20Guardrail%20Wallet" target="_blank" rel="noopener noreferrer">
-    <img src="./docs/assets/guardrail-donate.svg" alt="Support Guardrail Wallet" width="100%" style="max-width: 900px; border: 2px solid #172019;">
+    <img src="./docs/assets/guardrail-donate-v2.svg" alt="Support Guardrail Wallet" width="100%" style="max-width: 900px; border: 2px solid #172019;">
   </a>
 </p>
 <p align="center"><strong><a href="https://app.tonkeeper.com/transfer/UQCLbq0UGD65ljHQGlqF5pNgMAWDgE_bnavRxSSRZy-V3rEJ?text=Support%20Guardrail%20Wallet">Поддержать TON</a></strong></p>
