@@ -178,6 +178,7 @@ it maintained:
 - [Complete Agent API reference](./docs/API.md)
 - [Production deployment guide](./docs/DEPLOYMENT.md)
 - [Search engine submission guide](./docs/SEARCH-SETUP.md)
+- [Monetization playbook (self-hosted, agent-first)](./docs/MONETIZATION.md)
 
 ## License
 
